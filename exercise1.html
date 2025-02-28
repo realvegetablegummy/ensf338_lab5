@@ -23,6 +23,38 @@ Sabrina Li - 30173044
     <button id="purpleButton">Purple</button>
 </body>
 <script type="text/javascript">
+    document.addEventListener('keydown', (event) => {
+        if (event.key == 'Enter') {
+            let inputText = document.getElementById("textInput").value;
+            document.getElementById("textLabel").textContent = inputText;
 
+            document.getElementById("textInput").value = '';
+        }
+    });
+
+    const redButton = document.getElementById('redButton');
+    redButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'red';
+    });
+
+    const blueButton = document.getElementById('blueButton');
+    blueButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'blue';
+    });
+
+    const greenButton = document.getElementById('greenButton');
+    greenButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'green';
+    });
+
+    const orangeButton = document.getElementById('orangeButton');
+    orangeButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'orange';
+    });
+
+    const purpleButton = document.getElementById('purpleButton');
+    purpleButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'purple';
+    });
 </script>
 </html>
