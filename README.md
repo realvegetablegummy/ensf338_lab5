@@ -1,3 +1,3 @@
-# ensf338_lab5
+# ensf381_lab5
 
-ENSF 338 Lab 5
+ENSF 381 Lab 5
