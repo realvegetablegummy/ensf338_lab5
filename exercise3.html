@@ -1,0 +1,87 @@
+<!--
+exercise3.html
+ENSF 381 Lab 5 Exercise 3
+February 28th, 2025
+
+Kohinoor Chauhan - 30204155
+Sabrina Li - 30173044
+-->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Lab 5 - Exercise 3</title>
+</head>
+<body>
+    <input type="text" id="textInput" placeholder="Enter a user number (1-30)"/>
+    <label id="textLabel"></label>
+    <button id="redButton">Red</button>
+    <button id="blueButton">Blue</button>
+    <button id="greenButton">Green</button>
+    <button id="orangeButton">Orange</button>
+    <button id="purpleButton">Purple</button>
+</body>
+<script type="text/javascript">
+    let inputText = '';
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key == 'Enter') {
+            inputText = document.getElementById("textInput").value;
+            // document.getElementById("textLabel").textContent = inputText;
+
+            retrieveData();
+
+            document.getElementById("textInput").value = '';            
+        }
+    });
+
+    const redButton = document.getElementById('redButton');
+    redButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'red';
+    });
+
+    const blueButton = document.getElementById('blueButton');
+    blueButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'blue';
+    });
+
+    const greenButton = document.getElementById('greenButton');
+    greenButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'green';
+    });
+
+    const orangeButton = document.getElementById('orangeButton');
+    orangeButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'orange';
+    });
+
+    const purpleButton = document.getElementById('purpleButton');
+    purpleButton.addEventListener('click', () => {
+        document.getElementById("textLabel").style.color = 'purple';
+    });
+
+    async function retrieveData() {
+        try {
+            const data = await fetch('https://67c1fcd361d8935867e4fdbf.mockapi.io/users_api');
+            const users = await data.json();
+            console.log(users);
+            
+            var found = false;
+            users.forEach((user) => {
+                if (inputText === user.id) {
+                    document.getElementById("textLabel").textContent = "ID: " + user.id + ", " +
+                                                                       "Name: " + user.first_name + ", " +
+                                                                       "Group: " + user.user_group;
+                    found = true;
+                }
+            });
+            if (!found) {
+                document.getElementById("textLabel").textContent = "No users were found with the provided User_ID."
+            }
+        } catch (error) {
+            console.error('Error retrieving data: ', error);
+        }
+    }
+</script>
+</html>
